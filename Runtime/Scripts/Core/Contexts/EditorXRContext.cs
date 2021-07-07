@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.EditorXR.Utilities;
@@ -212,6 +212,13 @@ namespace Unity.EditorXR.Core
                 const string title = "Include in Player Builds";
                 const string tooltip = "Normally, EditorXR will only be available in the editor. Check this if you would like to modify its assembly definitions and include it in player builds";
                 EditorXR.includeInBuilds = EditorGUILayout.Toggle(new GUIContent(title, tooltip), EditorXR.includeInBuilds);
+            }
+
+            // Disable UI
+            {
+                const string title = "Disable UI";
+                const string tooltip = "Remove all interactive interface elements, including wands, and navigation";
+                EditorXR.disableUI = EditorGUILayout.Toggle(new GUIContent(title, tooltip), EditorXR.disableUI);
             }
 
             if (GUILayout.Button("Reset to Defaults", GUILayout.Width(140)))

@@ -51,6 +51,7 @@ namespace Unity.EditorXR.Core
         internal const string VRPlayerTag = "VRPlayer";
         const string k_PreserveLayout = "EditorXR.PreserveLayout";
         const string k_IncludeInBuilds = "EditorXR.IncludeInBuilds";
+        const string k_DisableUI = "EditorXR.DisableUI";
 
         static bool s_IsInitialized;
 
@@ -64,6 +65,12 @@ namespace Unity.EditorXR.Core
         {
             get { return EditorPrefs.GetBool(k_IncludeInBuilds, false); }
             set { EditorPrefs.SetBool(k_IncludeInBuilds, value); }
+        }
+
+        internal static bool disableUI
+        {
+            get { return EditorPrefs.GetBool(k_DisableUI, false); }
+            set { EditorPrefs.SetBool(k_DisableUI, value); }
         }
 
         internal static Type[] DefaultTools { get; set; }
@@ -81,6 +88,7 @@ namespace Unity.EditorXR.Core
 #if UNITY_EDITOR
             EditorPrefs.DeleteKey(k_PreserveLayout);
             EditorPrefs.DeleteKey(k_IncludeInBuilds);
+            EditorPrefs.DeleteKey(k_DisableUI);
             EditorPrefs.DeleteKey(SerializedPreferencesModule.SerializedPreferencesKey);
             ModuleLoaderDebugSettings.instance.SetModuleHideFlags(k_DefaultHideFlags);
 #endif
